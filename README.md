@@ -59,6 +59,78 @@ The complete code, datasets, and documentation will be uploaded to this reposito
 4. **Presentation**: A summary of key findings with the best visualizations supporting the insights.
 
 ---
+## Midterm Report
+
+The notebook conducts an in-depth analysis of the City of Boston's budget allocations, exploring how spending is distributed across departments, programs, and other key financial categories. The primary aim is to understand trends, evaluate spending priorities, and explore relationships within the budget data.
+
+### Datasets Used
+
+#### FY25 Adopted Operating Budget
+
+The main dataset analyzed is the **FY25 Adopted Operating Budget**, sourced from Boston’s Open Data Portal. This dataset provides comprehensive information on budget allocations and spending for the fiscal years from FY22 to FY25 across various city departments and programs. Key fields in this dataset include:
+
+- **Cabinet**: Identifies the overarching city government cabinet to which a department belongs (e.g., Public Health, Education, Housing).
+- **Department (Dept)**: Specifies the department or agency receiving funds.
+- **Program**: Further delineates the department’s budget into specific programs or initiatives.
+- **Expense Category**: Groups expenses into categories, such as personnel, contracted services, supplies, current charges, and equipment.
+- **FY22 Actual Expense**: Reflects actual expenditures made in FY22.
+- **FY23 Actual Expense**: Reflects actual expenditures made in FY23.
+- **FY24 Appropriation**: Shows the allocated budget for FY24.
+- **FY25 Budget**: The current budget amount allocated for FY25.
+
+#### FY25 Capital Budget Data
+
+In addition to the operating budget, an **FY25 Capital Budget** dataset is also examined, which outlines authorized funding and expenses related to long-term projects. This dataset provides insight into capital-intensive projects across Boston neighborhoods, including transportation improvements, community facilities, and public safety enhancements. Key columns include:
+
+- **Department**: The department managing the capital project.
+- **Project Name**: Name of the capital project.
+- **Scope of Work**: Describes the work and objectives of each project.
+- **Neighborhood**: Indicates the specific neighborhood or area affected by the project.
+- **Authorization Existing/FY/Future**: Lists existing, FY-specific, and future authorizations of funds.
+- **GO Expended and Grant Expended**: Details expenses from general obligation (GO) funds and grants.
+- **Capital and Grant Yearly Spending**: Shows yearly spending plans for capital projects over the next few years.
+- **Total Project Budget**: Total budget amount planned for the entire project.
+
+---
+
+### Data Preparation and Cleaning
+
+#### Handling Missing Values
+Both datasets were initially examined for missing or incomplete values. For easier processing, placeholders such as `#Missing` were replaced with `NaN` values, allowing for consistent handling in subsequent analysis steps.
+
+#### Data Formatting
+Column headers were standardized for readability, and numeric columns were converted to appropriate data types to facilitate analysis.
+
+---
+
+### Exploratory Data Analysis (EDA)
+
+The analysis begins with several key exploratory steps to understand the budget allocation structure and trends across the fiscal years:
+
+1. **Top 10 Departments by Budget**:
+   - A pie chart was generated to show the proportions of the FY25 budget allocated to the top 10 departments. This helps highlight which departments receive the highest funding, with all remaining departments grouped into an “Other” category.
+
+2. **Overall Budget Change Analysis**:
+   - The notebook examines budget changes across FY22 to FY25, comparing year-over-year budget increases. This analysis highlights the growth trend and overall spending increases in percentage terms over the years.
+
+3. **Expense Category Breakdown**:
+   - A breakdown of the budget by expense category (e.g., personnel, contracted services, supplies) is analyzed to identify where most funds are being directed, offering insights into Boston’s operational cost structure.
+
+4. **Capital Projects by Neighborhood**:
+   - Using the capital budget data, spending on projects across Boston neighborhoods is explored. This dataset provides the opportunity to map budget allocation geographically, allowing for a better understanding of area-specific investments.
+
+---
+
+### Additional Insights and Visualizations
+
+The notebook presents various visualizations to enhance the understanding of Boston’s budget data:
+
+- **Year-over-Year Budget Change**: Bar charts showing how budget allocations have shifted annually.
+- **Interactive Mapping**: With plans to use `GeoPandas` and `Folium`, this analysis aims to provide an interactive view of capital spending across Boston neighborhoods, making it easier to visualize and compare spending geographically.
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/REPLACEME/0.jpg)](https://www.youtube.com/watch?v=REPLACEME)
+
+---
 
 Project by:  
 Ryan Gilbert, Kae Chi, Oscar Mo, Chris Min, Alan Lin  
