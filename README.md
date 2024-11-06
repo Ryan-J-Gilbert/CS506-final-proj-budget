@@ -128,8 +128,7 @@ The notebook presents various visualizations to enhance the understanding of Bos
 - **Year-over-Year Budget Change**: Bar charts showing how budget allocations have shifted annually.
 - **Interactive Mapping**: With plans to use `GeoPandas` and `Folium`, this analysis aims to provide an interactive view of capital spending across Boston neighborhoods, making it easier to visualize and compare spending geographically.
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/REPLACEME/0.jpg)](https://www.youtube.com/watch?v=REPLACEME)
-
+https://youtu.be/0-sRxWNKfJg
 ---
 
 Project by:  
