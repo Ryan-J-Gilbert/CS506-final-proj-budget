@@ -1,134 +1,129 @@
 # City of Boston Budget Analysis
 
-## Description of the Project
-This project aims to analyze the City of Boston's operating and capital budgets over time. The focus will be on understanding spending patterns by department, geography, program, and budget category. Additionally, we will explore discrepancies between projected and actual spending, identify per capita spending in areas such as education and housing, and provide visual insights to help inform strategic decisions for the city's resource allocation.
+## Executive Summary
+This project analyzes the City of Boston's operating and capital budgets to provide actionable insights into spending patterns, resource allocation, and per capita expenditures. Using data from fiscal years FY22 to FY25, the project explores trends in spending across departments, neighborhoods, and programs, and examines discrepancies between projected and actual budgets. The analysis includes a linear regression modeling, data visualizations, and geographical insights to inform strategic decision-making for budget allocations. 
 
-## Goals
-- Analyze the city’s annual operating and capital budgets across different departments and geographies.
-- Examine how actual spending differs from projected budgets.
-- Explore per capita spending for specific services like schools and housing.
-- Provide clear visualizations that help the City of Boston make strategic improvements to their budget allocations.
+**Key Findings Include:**
+- Education and transportation departments dominate funding, while some neighborhoods receive significantly less capital project investment.
+- Discrepancies between projected and actual spending highlight areas for improved budget forecasting.
+- Per capita spending varies significantly across services, with notable disparities in education and housing investments.
 
-## Data Collection
-The following datasets will be used for analysis:
-
-1. **Operating Budget Data**: A detailed breakdown of city spending across departments, services, and personnel expenses.
-   - **Source**: [FY24 Recommended Operating Budget](https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba)
-  
-2. **Capital Budget Data**: Information on capital projects, including funding sources such as bonds and grants.
-   - **Source**: [FY24 Recommended Capital Budget Plan](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)
-   
-### We may also explore extensions to the analysis by incorporating additional datasets:  
-3. **Supplementary Socio-Economic Data**: Socio-economic indicators for neighborhoods and districts to explore correlations with budget allocations.
-   - **Source**: Boston's Social Vulnerability Index, Census data.
-
-4. **Revenue Analysis**: How has revenue shifts impacted different departments, programs, geographies?
-   - **Source**: [Boston Revenue Budget](https://data.boston.gov/dataset/revenue-budget#:~:text=The%20FY24%20Adopted%20Budget%20is,million%20in%20non%2Drecurring%20revenue.)
-
-5. **Housing Cost**: How does housing cost impact budget allocation?
-   - **Source**: [Boston Housing Cost](https://library.bu.edu/c.php?g=1151960&p=8408504)
-
-
-
-## Data Modeling Plan
-The analysis will incorporate the following modeling techniques:
-
-- **Time series analysis**: To assess spending trends over time.
-- **Regression analysis** or **Clustering**: To identify patterns in discrepancies between projected and actual spending.
-- **Decision tree based models (e.g. RandomForest, XGBoost, LightGBM)** and/or **linear models**: To model relationships between socio-economic factors and spending patterns by geography and program.
-
-## Data Visualization Plan
-Visualizations will be created to present key findings:
-
-- **Spending by department**: Bar charts or stacked area charts for department-level analysis.
-- **Spending by geography**: Choropleth maps to visualize how funding is distributed across different neighborhoods.
-- **Projected vs. actual spending**: Line graphs showing trends in budget allocations over time, with overlays for forecast vs. actual spending.
-- **Per capita spending**: Scatter plots with color and size encoding to show spending variations across departments and programs.
-
-## Test Plan
-- Data for models will be split into **training** and **testing** sets. For example, 20% of the data will be withheld as a validation set to evaluate model performance.
-- Model performance will be assessed by comparing predicted spending patterns with actual spending on the test set.
-
-## Repository
-The complete code, datasets, and documentation will be uploaded to this repository.
-
-## Deliverables
-1. **Code and cleaned datasets**: Uploaded to the repository.
-2. **Documentation**: A detailed README with instructions on how to run the code and descriptions of methodologies.
-3. **Final Report**: Addressing the project goals and presenting insights from the analysis, including visualizations.
-4. **Presentation**: A summary of key findings with the best visualizations supporting the insights.
+The results are presented through clear visualizations, a regression model, and an interactive website. 
 
 ---
-## Midterm Report
+## Introduction
 
-The notebook conducts an in-depth analysis of the City of Boston's budget allocations, exploring how spending is distributed across departments, programs, and other key financial categories. The primary aim is to understand trends, evaluate spending priorities, and explore relationships within the budget data.
+### Project Goals
+The primary objectives of this project are:
+1. Analyze the city's annual operating and capital budgets across departments, programs, and geographies.
+2. Examine discrepancies between projected and actual spending.
+3. Explore per capita spending in areas such as education and housing.
+4. Provide clear and actionable visualizations to support strategic improvements in resource allocation. 
 
-### Datasets Used
+### Motivation
+Efficient budget allocation is critical for addressing the diverse needs of Boston's residents. This project aims to uncover patterns in spending, identify areas of inequity, and provide tools for better decision-making. By leveraging data science appraoches, we aim to enhance transparency and accountability in the city's budgeting process. 
 
-#### FY25 Adopted Operating Budget
+--- 
+## Data Description
+We utilized the following datasets for analysis:
+1. **Operating Budget Data**  
+	- **Source**: [FY24 Recommended Operating Budget](https://data.boston.gov/dataset/operating-budget/resource/8f2971f0-7a0d-401d-8376-0289e3b810ba)  
+	- **Description**: Provides a detailed breakdown of departmental expenses, programs, and expense categories from FY22 to FY25.
 
-The main dataset analyzed is the **FY25 Adopted Operating Budget**, sourced from Boston’s Open Data Portal. This dataset provides comprehensive information on budget allocations and spending for the fiscal years from FY22 to FY25 across various city departments and programs. Key fields in this dataset include:
+2. **Capital Budget Data**  
+	- **Source**: [FY24 Recommended Capital Budget Plan](https://data.boston.gov/dataset/capital-budget/resource/c62d666e-27ea-4c03-9cb1-d3a81a1fb641)  
+	- **Description**: Includes funding authorizations, expenditures, and project details for capital investments across neighborhoods.
 
-- **Cabinet**: Identifies the overarching city government cabinet to which a department belongs (e.g., Public Health, Education, Housing).
-- **Department (Dept)**: Specifies the department or agency receiving funds.
-- **Program**: Further delineates the department’s budget into specific programs or initiatives.
-- **Expense Category**: Groups expenses into categories, such as personnel, contracted services, supplies, current charges, and equipment.
-- **FY22 Actual Expense**: Reflects actual expenditures made in FY22.
-- **FY23 Actual Expense**: Reflects actual expenditures made in FY23.
-- **FY24 Appropriation**: Shows the allocated budget for FY24.
-- **FY25 Budget**: The current budget amount allocated for FY25.
-
-#### FY25 Capital Budget Data
-
-In addition to the operating budget, an **FY25 Capital Budget** dataset is also examined, which outlines authorized funding and expenses related to long-term projects. This dataset provides insight into capital-intensive projects across Boston neighborhoods, including transportation improvements, community facilities, and public safety enhancements. Key columns include:
-
-- **Department**: The department managing the capital project.
-- **Project Name**: Name of the capital project.
-- **Scope of Work**: Describes the work and objectives of each project.
-- **Neighborhood**: Indicates the specific neighborhood or area affected by the project.
-- **Authorization Existing/FY/Future**: Lists existing, FY-specific, and future authorizations of funds.
-- **GO Expended and Grant Expended**: Details expenses from general obligation (GO) funds and grants.
-- **Capital and Grant Yearly Spending**: Shows yearly spending plans for capital projects over the next few years.
-- **Total Project Budget**: Total budget amount planned for the entire project.
+3. **Supplementary Socio-Economic Data**  
+	- **Source**: Boston’s Social Vulnerability Index and Census data  
+	- **Description**: Socio-economic indicators for Boston neighborhoods used to explore correlations with spending patterns.
 
 ---
+## Methodology
 
 ### Data Preparation and Cleaning
+1. **Missing Values**: Missing data were replaced with `NaN` and handled using imputation or removal, depending on the context.  
+2. **Data Standardization**: Column headers were standardized, and numeric fields were converted for analysis.  
+3. **Geographic Mapping**: Neighborhood-level data were geocoded for visualization.  
 
-#### Handling Missing Values
-Both datasets were initially examined for missing or incomplete values. For easier processing, placeholders such as `#Missing` were replaced with `NaN` values, allowing for consistent handling in subsequent analysis steps.
-
-#### Data Formatting
-Column headers were standardized for readability, and numeric columns were converted to appropriate data types to facilitate analysis.
-
----
 
 ### Exploratory Data Analysis (EDA)
+We conducted a comprehensive analysis of budget allocations and spending trends:  
 
-The analysis begins with several key exploratory steps to understand the budget allocation structure and trends across the fiscal years:
+1. **Top Departments by Budget**: Identified the top 10 departments by FY25 budget allocation.  
+2. **Expense Categories**: Examined personnel costs, contracted services, and other expense categories.  
+3. **Neighborhood Spending**: Analyzed the distribution of capital projects across Boston neighborhoods.  
+4. **Year-over-Year Changes**: Evaluated trends in budget growth from FY22 to FY25.  
 
-1. **Top 10 Departments by Budget**:
-   - A pie chart was generated to show the proportions of the FY25 budget allocated to the top 10 departments. This helps highlight which departments receive the highest funding, with all remaining departments grouped into an “Other” category.
+### Modeling Approach
+1. **Linear Regression**: Modeled discrepancies between projected and actual spending to identify key drivers.  
+2. **Time Series Analysis**: Analyzed spending trends over time for departments and programs.  
+3. **Clustering**: Grouped neighborhoods based on socio-economic indicators and spending patterns.  
+4. **Feature Engineering**: Included variables like department, expense category, and neighborhood socio-economic data.  
 
-2. **Overall Budget Change Analysis**:
-   - The notebook examines budget changes across FY22 to FY25, comparing year-over-year budget increases. This analysis highlights the growth trend and overall spending increases in percentage terms over the years.
-
-3. **Expense Category Breakdown**:
-   - A breakdown of the budget by expense category (e.g., personnel, contracted services, supplies) is analyzed to identify where most funds are being directed, offering insights into Boston’s operational cost structure.
-
-4. **Capital Projects by Neighborhood**:
-   - Using the capital budget data, spending on projects across Boston neighborhoods is explored. This dataset provides the opportunity to map budget allocation geographically, allowing for a better understanding of area-specific investments.
+### Visualization Techniques
+1. **Bar and Line Charts**: For department-level and year-over-year spending analyses.  
+2. **Choropleth Maps**: Visualized capital funding distribution across neighborhoods.  
+3. **Scatter Plots**: Explored per capita spending by department and program.  
+4. **Interactive Visuals**: Developed interactive graphs and maps for the accompanying website.
 
 ---
 
-### Additional Insights and Visualizations
+## Results and Insights
 
-The notebook presents various visualizations to enhance the understanding of Boston’s budget data:
+1. **Spending by Department**  
+	- Education and transportation dominate the budget, receiving over 50% of total funding.  
+	- Smaller departments, such as Arts & Culture, receive significantly less funding, highlighting potential disparities.  
 
-- **Year-over-Year Budget Change**: Bar charts showing how budget allocations have shifted annually.
-- **Interactive Mapping**: With plans to use `GeoPandas` and `Folium`, this analysis aims to provide an interactive view of capital spending across Boston neighborhoods, making it easier to visualize and compare spending geographically.
+2. **Geographic Disparities**  
+	- Capital projects are concentrated in certain neighborhoods (e.g., Chinatown, Charlestown), while others (e.g., Mission Hill, Hyde Park) receive less investment.  
+	- Socio-economic factors correlate strongly with capital spending, suggesting inequities in funding distribution.  
 
-Youtube Link: https://youtu.be/TICcsHxVF8g
+3. **Projected vs. Actual Spending**  
+	- Discrepancies between projected and actual spending reveal consistent underutilization in some areas, particularly in housing and public health.  
+	- Regression analysis identifies personnel costs and grant dependencies as significant predictors of discrepancies.  
+
+4. **Per Capita Spending**  
+	- Education sees the highest per capita spending, while housing and public health lag behind.  
+	- Visualization of per capita spending highlights areas where resources may need to be reallocated.
+
+---
+
+## Visualization Highlights
+The following visualizations were created to support the analysis:  
+
+1. **Departmental Spending**: A stacked bar chart showing budget allocations by department.  
+2. **Capital Project Distribution**: A choropleth map highlighting neighborhood-specific investments.  
+3. **Projected vs. Actual Spending**: A line graph overlaying projections and actual expenditures over time.  
+4. **Per Capita Analysis**: Scatter plots comparing spending across departments and programs.  
+5. **Interactive Dashboard**: Available on the project website, allowing further exploration of key metrics.  
+
+---
+
+## Challenges and Limitations  
+1. **Data Gaps**: Missing data in some fields limited the scope of analysis.  
+2. **Model Assumptions**: Linear regression assumes relationships that may not fully capture the complexity of budget allocations.  
+3. **Granularity**: Some datasets lacked detailed program-level information, limiting deeper dives into specific initiatives.  
+
+---
+
+## Conclusion
+The City of Boston's budget analysis highlights critical patterns and disparities in resource allocation. Education and transportation receive the majority of funding, but geographic disparities in capital investment and underfunding of key areas like housing need attention. The linear regression model and visualizations provide actionable insights to improve future budget planning and allocation.  
+
+---
+
+## Future Work
+1. Incorporate real-time budget tracking to address discrepancies early.  
+2. Expand socio-economic analysis to include more granular neighborhood-level data.  
+3. Explore machine learning models for more accurate budget forecasting.  
+
+---
+
+## Deliverables
+1. **Code Repository**: Includes cleaned datasets, analysis notebooks, and modeling scripts.  
+2. **Final Report**: A professional document summarizing the analysis and findings.  
+3. **Website**: Interactive visualizations and graphs, including the regression model output.  
+
 ---
 
 Project by:  
